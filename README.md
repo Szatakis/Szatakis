@@ -4,7 +4,7 @@
 
 ## Currently Working On
 
-*  **ZytrOS** – a operating system build from sratch
+*  **NasuaOS** – a operating system build from scratch
 
 ## 🛠️ Languages & Tools
 
