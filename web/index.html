@@ -1,0 +1,405 @@
+﻿
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Szatakis</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 4px;
+    background: #222936;
+    color: #e1e5ed;
+    font-family: 'VT323', monospace;
+    font-size: 17px;
+    min-height: 100vh;
+}
+
+.terminal {
+    border: 1px solid #647d98;
+    border-radius: 2px;
+    min-height: calc(100vh - 8px);
+    padding: 20px 17px;
+    overflow: hidden;
+    background: #2b3341;
+    box-shadow: inset 0 0 20px rgba(0,0,0,.08);
+}
+
+.prompt {
+    color: #8b9bb0;
+    font-size: 15px;
+}
+
+.logo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(24px, 8vw, 83px);
+    line-height: 1.35;
+    letter-spacing: -5px;
+    color: #e2e5ed;
+    text-shadow: 3px 3px #8c98a8;
+    margin: 12px 0 10px;
+    white-space: nowrap;
+}
+
+.intro {
+    line-height: 1.05;
+    margin-bottom: 3px;
+}
+
+.command {
+    color: #a5b5c9;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+    margin: 12px 0 18px;
+    flex-wrap: wrap;
+}
+
+.ascii {
+    white-space: pre;
+    font-size: clamp(8px, 1.8vw, 17px);
+    line-height: .85;
+    color: #e2e5ed;
+    text-shadow: 1px 1px #8c98a8;
+}
+
+.info {
+    font-size: 16px;
+    line-height: 1.1;
+    padding-top: 0;
+}
+
+.info a {
+    color: #d6dce8;
+    text-decoration: underline;
+}
+
+.info a:hover {
+    color: white;
+    background: #53647a;
+}
+
+.section {
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-weight: bold;
+    border-bottom: 1px dashed #8c98a8;
+    display: inline-block;
+    min-width: 70px;
+    margin-bottom: 3px;
+}
+
+.output {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.1;
+    margin: 10px 0;
+}
+
+.output a {
+    color: #d6dce8;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.input-line span {
+    color: #8b9bb0;
+    white-space: nowrap;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e2e5ed;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    caret-color: white;
+}
+
+.cursor {
+    display: inline-block;
+    width: 7px;
+    height: 15px;
+    background: #a9b9cc;
+    animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+a {
+    cursor: pointer;
+}
+
+@media(max-width: 600px) {
+    .terminal {
+        padding: 15px 10px;
+    }
+
+    .content {
+        gap: 20px;
+    }
+
+    .ascii {
+        font-size: 9px;
+    }
+
+    .logo {
+        letter-spacing: -3px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="terminal" id="terminal">
+
+    <div class="prompt">visitor@szatakis:~ $</div>
+
+    <div class="logo">Szatakis</div>
+
+    <div class="intro">
+        Type 'help' to see the list of available commands.<br>
+        Type 'sumfetch' to display summary.<br>
+        Type 'repo' or click <a href="https://github.com/" target="_blank">here</a> for the Github repository.
+    </div>
+
+    <div class="prompt">visitor@szatakis:~ $ sumfetch</div>
+
+    <div class="content">
+        <div class="ascii">
+          ███████████████
+       ███░░░░░░░░░░░░░███
+     ██░░░░░░░░░░░░░░░░░██
+    ██░░░░░░░░░░░░░░░░░░░██
+   ██░░░░░░░░░░░░░░░░░░░░░██
+   █████████████████████████
+   ██                             ██
+   ██     &gt; S Z A T A K I S       ██
+   ██                             ██
+   █████████████████████████
+    ██░░░░░░░░░░░░░░░░░░░██
+     ██░░░░░░░░░░░░░░░░░██
+       ███░░░░░░░░░░░░░███
+          ███████████████
+        </div>
+
+        <div class="info">
+
+            <div class="section">
+                <div class="section-title">▣ sumfetch</div><br>
+                <div>▣ ABOUT</div>
+                <div>♙ Szatakis</div>
+                <div>▣ Resume</div>
+                <div>◉ <a href="https://github.com/Szatakis/szatakis" target="_blank">Github repo</a></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">✿ CONTACT</div><br>
+                <div>✉ szataku@email.com</div>
+                <div>◉ <a href="https://github.com/" target="_blank">github.com/github</a></div>
+                <div>in <a href="https://linkedin.com/" target="_blank">linkedin.com/in/linkedin</a></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">♥ DONATE</div><br>
+                <div>◈ <a href="https://paypal.me/" target="_blank">https://paypal.me/example</a></div>
+                <div>$ <a href="https://patreon.com/" target="_blank">https://patreon.com/example</a></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="history"></div>
+
+    <div class="input-line">
+        <span>visitor@szatakis:~ $</span>
+        <input id="commandInput" type="text" autocomplete="off" autofocus spellcheck="false">
+        <span class="cursor"></span>
+    </div>
+
+</div>
+
+<script>
+const input = document.getElementById("commandInput");
+const history = document.getElementById("history");
+const terminal = document.getElementById("terminal");
+
+const commands = {
+    help: `
+Available commands:
+
+  help       - Show available commands
+  about      - About me
+  sumfetch   - Display profile summary
+  projects   - Show my projects
+  skills     - Show my skills
+  contact    - Contact information
+  socials    - Social media links
+  repo       - Open Github repository
+  date       - Display current date
+  whoami     - Who are you?
+  clear      - Clear terminal
+  echo       - Print text
+  banner     - Display LiveTerm banner
+    `,
+
+    about: `
+ABOUT
+-----
+Hello! I'm John Doe.
+
+I'm a developer who loves creating
+interesting things on the internet.
+
+Welcome to my terminal!
+    `,
+
+    projects: `
+PROJECTS
+--------
+1. My Portfolio
+2. Web Applications
+3. JavaScript Projects
+4. Creative Experiments
+
+More projects coming soon!
+    `,
+
+    skills: `
+SKILLS
+------
+> HTML / CSS
+> JavaScript
+> React
+> Node.js
+> Python
+> Git
+    `,
+
+    contact: `
+CONTACT
+-------
+Email: contact@email.com
+Github: github.com/github
+LinkedIn: linkedin.com/in/linkedin
+    `,
+
+    socials: `
+SOCIALS
+-------
+Github:   https://github.com/
+LinkedIn: https://linkedin.com/
+Twitter:  https://twitter.com/
+    `,
+
+    whoami: `
+visitor@liveterm
+
+You are currently browsing LiveTerm.
+Nice to meet you!
+    `,
+
+    sumfetch: `
+       LIVE TERM
+-------------------------
+Name:       John Doe
+Role:       Developer
+Location:   Internet
+Status:     Available
+-------------------------
+    `,
+
+    date: new Date().toLocaleString(),
+
+    banner: "██╗     ██╗██╗   ██╗███████╗████████╗███████╗██████╗ ███╗   ███╗\n██║     ██║██║   ██║██╔════╝╚══██╔══╝██╔════╝██╔══██╗████╗ ████║\n██║     ██║██║   ██║█████╗     ██║   █████╗  ██████╔╝██╔████╔██║\n██║     ██║╚██╗ ██╔╝██╔══╝     ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║\n███████╗██║ ╚████╔╝ ███████╗   ██║   ███████╗██║  ██║██║ ╚═╝ ██║"
+};
+
+function executeCommand(raw) {
+    const command = raw.trim();
+    if (!command) return;
+
+    const parts = command.split(" ");
+    const name = parts[0].toLowerCase();
+    const args = parts.slice(1).join(" ");
+
+    const line = document.createElement("div");
+    line.className = "prompt";
+    line.textContent = "visitor@liveterm:~ $ " + command;
+    history.appendChild(line);
+
+    const result = document.createElement("div");
+    result.className = "output";
+
+    if (name === "clear") {
+        history.innerHTML = "";
+        return;
+    }
+
+    if (name === "repo") {
+        result.innerHTML = 'Opening Github repository...';
+        history.appendChild(result);
+        window.open("https://github.com/szatakis", "_blank");
+        return;
+    }
+
+    if (name === "echo") {
+        result.textContent = args;
+    } else if (name === "sudo") {
+        result.textContent = "Nice try ;) Permission denied.";
+    } else if (name === "exit") {
+        result.textContent = "You cannot escape LiveTerm!";
+    } else if (commands[name] !== undefined) {
+        result.textContent = commands[name];
+    } else {
+        result.textContent =
+            "Command not found: " + name +
+            "\nType 'help' to see available commands.";
+    }
+
+    history.appendChild(result);
+
+    terminal.scrollTop = terminal.scrollHeight;
+}
+
+input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        executeCommand(input.value);
+        input.value = "";
+        terminal.scrollTop = terminal.scrollHeight;
+    }
+});
+
+terminal.addEventListener("click", function() {
+    input.focus();
+});
+
+window.addEventListener("load", () => {
+    input.focus();
+});
+</script>
+</body>
+</html>
