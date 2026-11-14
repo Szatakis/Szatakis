@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -253,6 +253,7 @@ const commands = {
 Available commands:
 
   help       - Show available commands
+  startx     - Open desktop
   about      - About me
   sumfetch   - Display profile summary
   projects   - Show my projects
@@ -303,17 +304,17 @@ SKILLS
     contact: `
 CONTACT
 -------
-Email: contact@email.com
-Github: github.com/github
+Email: szataku@email.com
+Github: github.com/szatakis
 LinkedIn: linkedin.com/in/linkedin
     `,
 
     socials: `
 SOCIALS
 -------
-Github:   https://github.com/
+Github:   https://github.com/szatakis
 LinkedIn: https://linkedin.com/
-Twitter:  https://twitter.com/
+Twitter:  https://twitter.com/szatakis
     `,
 
     whoami: `
@@ -359,6 +360,20 @@ function executeCommand(raw) {
         return;
     }
 
+    if (name === "startx") {
+        result.textContent = "Starting graphical environment...";
+        history.appendChild(result);
+
+        const host = window.location.hostname;
+        const parts = host.split(".");
+
+        const domain = parts.length > 2 ? parts.slice(-2).join(".") : host;
+
+        window.location.href = window.location.protocol + "//desktop." + domain;
+
+        return;
+    }
+
     if (name === "repo") {
         result.innerHTML = 'Opening Github repository...';
         history.appendChild(result);
@@ -375,9 +390,7 @@ function executeCommand(raw) {
     } else if (commands[name] !== undefined) {
         result.textContent = commands[name];
     } else {
-        result.textContent =
-            "Command not found: " + name +
-            "\nType 'help' to see available commands.";
+        result.textContent = "Command not found: " + name + "\nType 'help' to see available commands.";
     }
 
     history.appendChild(result);
